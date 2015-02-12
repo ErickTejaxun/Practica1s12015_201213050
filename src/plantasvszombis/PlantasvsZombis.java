@@ -16,6 +16,8 @@ public class PlantasvsZombis {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Inicio nueva= new Inicio();
+        nueva.show(true);
     }
     
 }
