@@ -7,8 +7,11 @@ package plantasvszombis;
 
 import java.io.File;
 import Estructuras.*;
-import javax.swing.ImageIcon;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import javax.swing.*;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -57,12 +60,13 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
         lista_tipo = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        Mostrador = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Mostrador = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PlantasVsZombis 1.0.0");
@@ -132,38 +136,38 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(30, 10, 340, 50);
 
-        Mostrador.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        Mostrador.setLayout(null);
-
         jLabel3.setFont(new java.awt.Font("Comic Sans MS", 2, 12)); // NOI18N
         jLabel3.setText("Imagen");
-        Mostrador.add(jLabel3);
-        jLabel3.setBounds(30, 20, 90, 30);
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(40, 330, 90, 30);
 
         jLabel8.setFont(new java.awt.Font("Comic Sans MS", 2, 12)); // NOI18N
         jLabel8.setText("Nombre");
-        Mostrador.add(jLabel8);
-        jLabel8.setBounds(130, 20, 90, 30);
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(150, 330, 90, 30);
 
         jLabel9.setFont(new java.awt.Font("Comic Sans MS", 2, 12)); // NOI18N
         jLabel9.setText("Ataque");
-        Mostrador.add(jLabel9);
-        jLabel9.setBounds(240, 20, 70, 30);
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(300, 330, 70, 30);
 
         jLabel10.setFont(new java.awt.Font("Comic Sans MS", 2, 12)); // NOI18N
         jLabel10.setText("Defensa");
-        Mostrador.add(jLabel10);
-        jLabel10.setBounds(300, 20, 70, 30);
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(440, 330, 70, 30);
 
         jLabel11.setFont(new java.awt.Font("Comic Sans MS", 2, 12)); // NOI18N
         jLabel11.setText("Tipo");
-        Mostrador.add(jLabel11);
-        jLabel11.setBounds(380, 20, 70, 30);
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(590, 330, 70, 30);
 
-        getContentPane().add(Mostrador);
-        Mostrador.setBounds(560, 20, 490, 480);
+        Mostrador.setLayout(null);
+        jScrollPane1.setViewportView(Mostrador);
 
-        setBounds(0, 0, 1091, 619);
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(40, 360, 860, 310);
+
+        setBounds(0, 0, 1091, 726);
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_imagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_imagenActionPerformed
@@ -192,7 +196,25 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
        
         
     }//GEN-LAST:event_boton_imagenActionPerformed
-
+    public void mostrar(nodo_planta nuevo){
+        String nombre=nuevo.nombre;
+        String tipo=nuevo.tipo;
+        String paht=nuevo.pathimagen;
+        int  ataque=nuevo.ataque;
+        int defensa=nuevo.defensa;
+        Mostrador.setLayout(null);
+        JLabel mnombre= new JLabel(); mnombre.setText(nombre);Mostrador.add(mnombre); mnombre.setBounds(120,mostradory,130,30);
+        JLabel mataque= new JLabel(); mataque.setText(String.valueOf(ataque));Mostrador.add(mataque); mataque.setBounds(270,mostradory,130,30);
+        JLabel mdefensa=new JLabel(); mdefensa.setText(String.valueOf(defensa)); Mostrador.add(mdefensa);mdefensa.setBounds(410,mostradory,130,30);
+        JLabel mtipo= new JLabel(); mtipo.setText(tipo);Mostrador.add(mtipo); mtipo.setBounds(560,mostradory,130,30);
+        JButton eliminar=new JButton(); eliminar.setText("Eliminar");Mostrador.add(eliminar); eliminar.setBounds(690,mostradory,100,20);
+        JButton modificar=new JButton(); modificar.setText("Modificar");Mostrador.add(modificar);modificar.setBounds(690,mostradory+20,100,20);
+        JLabel mimagen=new JLabel();Mostrador.add(mimagen);mimagen.setBounds(10,mostradory+20,100,100);
+        ImageIcon imagen = new ImageIcon(pathactual);
+        ImageIcon imagenredimencionada= new ImageIcon(imagen.getImage().getScaledInstance(100, 100,0));
+        mimagen.setIcon(imagenredimencionada);
+        mostradory+=100;
+       }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String nombre=nombre_planta.getText();
         int ataque= Integer.valueOf(lista_ataque.getSelectedItem().toString());
@@ -202,7 +224,7 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
         nuevaplanta=new nodo_planta(nombre,pathactual,ataque,defensa,tipo);
         PlantasvsZombis.plantas.insertar(nuevaplanta);
         limpiar();
-        
+        mostrar(nuevaplanta);
         
    
     
@@ -269,6 +291,7 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox lista_ataque;
     private javax.swing.JComboBox lista_defensa;
     private javax.swing.JComboBox lista_tipo;
