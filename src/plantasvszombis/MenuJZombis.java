@@ -98,9 +98,8 @@ public class MenuJZombis extends javax.swing.JFrame {
         String tipo_jugador="Zombie";
         nodo_jugador nuevo= new nodo_jugador(nombre_jugador,numero_personajes,tipo_jugador);
         PlantasvsZombis.jugadores.insertar(nuevo);
-        listajugadores.insertar(nuevo);      
-        listaatributo.raiz=null;
-       
+        nuevo.atributos=listaatributo;     
+        listaatributo=null;       
         JOptionPane.showMessageDialog(this, "Jugador Planta Creado");
         this.show(false);
         
