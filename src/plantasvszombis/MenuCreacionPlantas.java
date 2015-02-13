@@ -5,8 +5,11 @@
  */
 package plantasvszombis;
 
+import java.io.File;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -36,7 +39,7 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        imagenaqui = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         nombre_planta = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -60,10 +63,10 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
         jPanel1.add(jLabel2);
         jLabel2.setBounds(10, 20, 70, 30);
 
-        jLabel3.setBackground(new java.awt.Color(153, 153, 255));
-        jLabel3.setText("Su imagen Aquí :v");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(320, 20, 180, 150);
+        imagenaqui.setBackground(new java.awt.Color(153, 153, 255));
+        imagenaqui.setText("Su imagen Aquí :v");
+        jPanel1.add(imagenaqui);
+        imagenaqui.setBounds(320, 20, 180, 150);
 
         jLabel4.setText("Nombre");
         jPanel1.add(jLabel4);
@@ -118,23 +121,23 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
 
     private void boton_imagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_imagenActionPerformed
         JFileChooser seleccion =new JFileChooser();
-        seleccion.showDialog(this, "Elija la imagen de su nueva planta");
-        if(PlantasvsZombis.jugadores.raiz==null){
-        mensaje("No ha creado ningun jugador");
-        }else if(PlantasvsZombis.jugadores.raiz.siguiente==null){
-                if(PlantasvsZombis.jugadores.raiz.tipo_jugador.equals("Planta")){
-                    mensaje("Debe crear al jugador zombi");
-                }else{
-                    mensaje("Debe crear al jugador Planta");
-                }
-    
-        
-        
+        FileNameExtensionFilter filtro=new FileNameExtensionFilter(".jpg",".png");
+        seleccion.setFileFilter(filtro);
+        seleccion.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        int resultado= seleccion.showOpenDialog(this);
+        if(resultado==JFileChooser.APPROVE_OPTION){
+            File nombre=seleccion.getSelectedFile();
+            
+            ImageIcon imagen = new ImageIcon(seleccion.getSelectedFile().getPath());
+            ImageIcon imagenredimencionada= new ImageIcon(imagen.getImage().getScaledInstance(20, 20,20));
+            imagenaqui.setIcon(imagenredimencionada);
         }
+        
+        
+        seleccion.showDialog(this, "Elija la imagen de su nueva planta");
+        
     }//GEN-LAST:event_boton_imagenActionPerformed
-    public void mensaje(String mensaje){
-    JOptionPane.showInternalMessageDialog(this, mensaje);
-    }
+   
     /**
      * @param args the command line arguments
      */
@@ -173,10 +176,10 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Mostrador;
     private javax.swing.JButton boton_imagen;
+    private javax.swing.JLabel imagenaqui;
     private javax.swing.JComboBox jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
