@@ -5,6 +5,8 @@
  */
 package plantasvszombis;
 
+import Estructuras.Lista_jugadores;
+
 /**
  *
  * @author Erick
@@ -14,6 +16,7 @@ public class PlantasvsZombis {
     /**
      * @param args the command line arguments
      */
+    public static Lista_jugadores jugadores;
     public static void main(String[] args) {
         // TODO code application logic here
         Inicio nueva= new Inicio();
