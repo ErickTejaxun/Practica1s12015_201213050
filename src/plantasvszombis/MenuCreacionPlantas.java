@@ -41,7 +41,6 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
         jComboBox3 = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         Mostrador = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PlantasVsZombis 1.0.0");
@@ -106,10 +105,6 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
         getContentPane().add(Mostrador);
         Mostrador.setBounds(560, 20, 490, 480);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(jPanel2);
-        jPanel2.setBounds(30, 340, 430, 120);
-
         setBounds(0, 0, 1091, 619);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -162,7 +157,6 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
