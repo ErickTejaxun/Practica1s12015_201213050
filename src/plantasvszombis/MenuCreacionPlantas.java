@@ -6,9 +6,9 @@
 package plantasvszombis;
 
 import java.io.File;
+import Estructuras.*;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -20,11 +20,17 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
     /**
      * Creates new form MenuCreacionPlantas
      */
+    public String pathactual;
+    public nodo_planta nuevaplanta;
+    public int mostradorx;
+    public int mostradory;
     public MenuCreacionPlantas() {
         initComponents();
         for(int x=1;x<100;x++){
         lista_defensa.addItem(x);
         lista_ataque.addItem(x);
+        mostradorx=10;
+        mostradory=10;
         }
     }
 
@@ -48,9 +54,15 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
         lista_defensa = new javax.swing.JComboBox();
         boton_imagen = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox();
+        lista_tipo = new javax.swing.JComboBox();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         Mostrador = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PlantasVsZombis 1.0.0");
@@ -64,9 +76,8 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
         jLabel2.setBounds(10, 20, 70, 30);
 
         imagenaqui.setBackground(new java.awt.Color(153, 153, 255));
-        imagenaqui.setText("Su imagen Aquí :v");
         jPanel1.add(imagenaqui);
-        imagenaqui.setBounds(320, 20, 180, 150);
+        imagenaqui.setBounds(320, 20, 90, 80);
 
         jLabel4.setText("Nombre");
         jPanel1.add(jLabel4);
@@ -101,9 +112,18 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
         jPanel1.add(jLabel7);
         jLabel7.setBounds(10, 200, 100, 30);
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Disparador", "Ataque Directo" }));
-        jPanel1.add(jComboBox3);
-        jComboBox3.setBounds(120, 210, 120, 20);
+        lista_tipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Disparador", "Ataque Directo" }));
+        jPanel1.add(lista_tipo);
+        lista_tipo.setBounds(120, 210, 120, 20);
+
+        jButton1.setText("Crear Personaje");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1);
+        jButton1.setBounds(320, 190, 130, 30);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(20, 70, 530, 240);
@@ -113,6 +133,33 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
         jLabel1.setBounds(30, 10, 340, 50);
 
         Mostrador.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Mostrador.setLayout(null);
+
+        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 2, 12)); // NOI18N
+        jLabel3.setText("Imagen");
+        Mostrador.add(jLabel3);
+        jLabel3.setBounds(30, 20, 90, 30);
+
+        jLabel8.setFont(new java.awt.Font("Comic Sans MS", 2, 12)); // NOI18N
+        jLabel8.setText("Nombre");
+        Mostrador.add(jLabel8);
+        jLabel8.setBounds(130, 20, 90, 30);
+
+        jLabel9.setFont(new java.awt.Font("Comic Sans MS", 2, 12)); // NOI18N
+        jLabel9.setText("Ataque");
+        Mostrador.add(jLabel9);
+        jLabel9.setBounds(240, 20, 70, 30);
+
+        jLabel10.setFont(new java.awt.Font("Comic Sans MS", 2, 12)); // NOI18N
+        jLabel10.setText("Defensa");
+        Mostrador.add(jLabel10);
+        jLabel10.setBounds(300, 20, 70, 30);
+
+        jLabel11.setFont(new java.awt.Font("Comic Sans MS", 2, 12)); // NOI18N
+        jLabel11.setText("Tipo");
+        Mostrador.add(jLabel11);
+        jLabel11.setBounds(380, 20, 70, 30);
+
         getContentPane().add(Mostrador);
         Mostrador.setBounds(560, 20, 490, 480);
 
@@ -121,7 +168,7 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
 
     private void boton_imagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_imagenActionPerformed
         JFileChooser seleccion =new JFileChooser();
-        FileNameExtensionFilter filtro=new FileNameExtensionFilter(".jpg",".png");
+        FileNameExtensionFilter filtro=new FileNameExtensionFilter(".PNG",".png");
         seleccion.setFileFilter(filtro);
         seleccion.setFileSelectionMode(JFileChooser.FILES_ONLY);
         int resultado= seleccion.showOpenDialog(this);
@@ -129,15 +176,47 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
             File nombre=seleccion.getSelectedFile();
             
             ImageIcon imagen = new ImageIcon(seleccion.getSelectedFile().getPath());
-            ImageIcon imagenredimencionada= new ImageIcon(imagen.getImage().getScaledInstance(20, 20,20));
+            pathactual=seleccion.getSelectedFile().getPath();
+            int y=imagenaqui.getWidth();
+            int x=imagenaqui.getHeight();
+            ImageIcon imagenredimencionada= new ImageIcon(imagen.getImage().getScaledInstance(x, y,0));
             imagenaqui.setIcon(imagenredimencionada);
+            
+            
+//            iba aqu[i que quiero mostrar las plantas creadas en el panel de a la par :v :v :V
+            // AHhhh y arreglar que para borra nodos :v :V :V
+            
         }
         
         
-        seleccion.showDialog(this, "Elija la imagen de su nueva planta");
+       
         
     }//GEN-LAST:event_boton_imagenActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String nombre=nombre_planta.getText();
+        int ataque= Integer.valueOf(lista_ataque.getSelectedItem().toString());
+        int defensa= Integer.valueOf(lista_defensa.getSelectedItem().toString());
+        String tipo=lista_tipo.getSelectedItem().toString();
+
+        nuevaplanta=new nodo_planta(nombre,pathactual,ataque,defensa,tipo);
+        PlantasvsZombis.plantas.insertar(nuevaplanta);
+        limpiar();
+        
+        
    
+    
+    
+    }//GEN-LAST:event_jButton1ActionPerformed
+   public void limpiar(){
+    nombre_planta.setText("");
+    lista_ataque.setSelectedIndex(0);
+    lista_defensa.setSelectedIndex(0);
+    lista_tipo.setSelectedIndex(0);
+    imagenaqui.setIcon(null);
+   }
+   
+
     /**
      * @param args the command line arguments
      */
@@ -177,16 +256,22 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
     private javax.swing.JPanel Mostrador;
     private javax.swing.JButton boton_imagen;
     private javax.swing.JLabel imagenaqui;
-    private javax.swing.JComboBox jComboBox3;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox lista_ataque;
     private javax.swing.JComboBox lista_defensa;
+    private javax.swing.JComboBox lista_tipo;
     private javax.swing.JTextField nombre_planta;
     // End of variables declaration//GEN-END:variables
 }
