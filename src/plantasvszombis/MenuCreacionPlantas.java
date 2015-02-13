@@ -7,8 +7,6 @@ package plantasvszombis;
 
 import java.io.File;
 import Estructuras.*;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import javax.swing.*;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -27,6 +25,7 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
     public nodo_planta nuevaplanta;
     public int mostradorx;
     public int mostradory;
+    
     public MenuCreacionPlantas() {
         initComponents();
         for(int x=1;x<100;x++){
@@ -34,6 +33,7 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
         lista_ataque.addItem(x);
         mostradorx=10;
         mostradory=10;
+     
         }
     }
 
@@ -65,7 +65,7 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scroll = new javax.swing.JScrollPane();
         Mostrador = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -161,11 +161,13 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
         getContentPane().add(jLabel11);
         jLabel11.setBounds(590, 330, 70, 30);
 
-        Mostrador.setLayout(null);
-        jScrollPane1.setViewportView(Mostrador);
+        scroll.setBorder(new javax.swing.border.MatteBorder(null));
+        scroll.setViewportView(Mostrador);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(40, 360, 860, 310);
+        getContentPane().add(scroll);
+        scroll.setBounds(30, 360, 830, 290);
+        scroll.setViewportView(Mostrador);
+        scroll.getViewport().setView(Mostrador);
 
         setBounds(0, 0, 1091, 726);
     }// </editor-fold>//GEN-END:initComponents
@@ -214,6 +216,7 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
         ImageIcon imagenredimencionada= new ImageIcon(imagen.getImage().getScaledInstance(100, 100,0));
         mimagen.setIcon(imagenredimencionada);
         mostradory+=100;
+        
        }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String nombre=nombre_planta.getText();
@@ -291,10 +294,10 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox lista_ataque;
     private javax.swing.JComboBox lista_defensa;
     private javax.swing.JComboBox lista_tipo;
     private javax.swing.JTextField nombre_planta;
+    private static javax.swing.JScrollPane scroll;
     // End of variables declaration//GEN-END:variables
 }
