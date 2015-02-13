@@ -5,6 +5,8 @@
  */
 package plantasvszombis;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Erick
@@ -31,6 +33,7 @@ public class Inicio extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         boton_limpiar = new javax.swing.JButton();
         boton_comenzarjuego = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         boton_crearJP = new javax.swing.JButton();
         boton_crearJZ = new javax.swing.JButton();
@@ -50,8 +53,13 @@ public class Inicio extends javax.swing.JFrame {
 
         boton_limpiar.setFont(new java.awt.Font("Comic Sans MS", 3, 14)); // NOI18N
         boton_limpiar.setText("Eliminar Datos");
+        boton_limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_limpiarActionPerformed(evt);
+            }
+        });
         jPanel1.add(boton_limpiar);
-        boton_limpiar.setBounds(20, 100, 131, 29);
+        boton_limpiar.setBounds(20, 100, 150, 29);
 
         boton_comenzarjuego.setFont(new java.awt.Font("Comic Sans MS", 3, 14)); // NOI18N
         boton_comenzarjuego.setText("Iniciar Juego");
@@ -61,7 +69,12 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         jPanel1.add(boton_comenzarjuego);
-        boton_comenzarjuego.setBounds(20, 60, 130, 29);
+        boton_comenzarjuego.setBounds(20, 60, 150, 29);
+
+        jLabel4.setFont(new java.awt.Font("Comic Sans MS", 3, 14)); // NOI18N
+        jLabel4.setText("Opiones de Juego");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(20, 10, 150, 30);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(220, 120, 180, 140);
@@ -111,10 +124,36 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_crearJPActionPerformed
 
     private void boton_comenzarjuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_comenzarjuegoActionPerformed
-    MenuCreacionPlantas nuevo=new MenuCreacionPlantas();
-    nuevo.show(true);
+        if(PlantasvsZombis.jugadores.vacio()){
+        mensaje("No ha creado ningun jugador");
+        }else if(PlantasvsZombis.jugadores.raiz.siguiente==null){
+                if(PlantasvsZombis.jugadores.raiz.tipo_jugador.equals("Planta")){
+                    mensaje("Debe crear al jugador zombi");
+                }else{
+                    mensaje("Debe crear al jugador Planta");
+                }
+    
+        
+        
+        }else{
+            MenuCreacionPlantas nuevo=new MenuCreacionPlantas();
+             nuevo.show(true);
+        }
+        
+        
+        
+    
+    
+    
+   
     }//GEN-LAST:event_boton_comenzarjuegoActionPerformed
 
+    private void boton_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_limpiarActionPerformed
+        PlantasvsZombis.jugadores.vaciar();
+    }//GEN-LAST:event_boton_limpiarActionPerformed
+     public void mensaje(String mensaje){
+    JOptionPane.showMessageDialog(null,mensaje);
+    }
     /**
      * @param args the command line arguments
      */
@@ -157,6 +196,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton boton_limpiar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables

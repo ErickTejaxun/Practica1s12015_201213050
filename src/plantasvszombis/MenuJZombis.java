@@ -100,7 +100,7 @@ public class MenuJZombis extends javax.swing.JFrame {
         PlantasvsZombis.jugadores.insertar(nuevo);
         nuevo.atributos=listaatributo;     
         listaatributo=null;       
-        JOptionPane.showMessageDialog(this, "Jugador Planta Creado");
+        JOptionPane.showMessageDialog(this, "Jugador Zombi Creado");
         this.show(false);
         
     }//GEN-LAST:event_boton_validarActionPerformed

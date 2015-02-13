@@ -15,13 +15,15 @@ public class nodo_planta {
     public int ataque;
     public int defensa;
     public String tipo;
+    public String pathimagen;
     public nodo_planta siguiente;
     
-    public nodo_planta(String nombre, int ataque, int defensa, String tipo){
+    public nodo_planta(String nombre,String path, int ataque, int defensa, String tipo){
     this.nombre=nombre;
     this.ataque=ataque;
     this.defensa=defensa;
     this.tipo=tipo;   
+    this.pathimagen=path;
     }
     
     public String getNombre() {

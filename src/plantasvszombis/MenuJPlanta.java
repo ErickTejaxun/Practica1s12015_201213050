@@ -97,9 +97,9 @@ public class MenuJPlanta extends javax.swing.JFrame {
         int numero_personajes=Integer.valueOf(txtnumero.getText());
         String tipo_jugador="Planta";
         nodo_jugador nuevo= new nodo_jugador(nombre_jugador,numero_personajes,tipo_jugador);
+        nuevo.atributos=listaatributo;
         PlantasvsZombis.jugadores.insertar(nuevo);
-        listajugadores.insertar(nuevo);      
-        listaatributo.raiz=null;
+        listaatributo=null;
        
         JOptionPane.showMessageDialog(this, "Jugador Planta Creado");
         this.show(false);

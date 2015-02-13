@@ -22,6 +22,7 @@ public class PlantasvsZombis {
     public static void main(String[] args) {
         // TODO code application logic here
         Inicio nueva= new Inicio();
+        plantas=new Lista_plantas();
        jugadores=new Lista_jugadores();
         nueva.show(true);
     }

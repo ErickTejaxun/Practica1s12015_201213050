@@ -39,5 +39,9 @@ public class Lista_jugadores {
         }
         return resultado;
     }
+    public void vaciar(){
+    raiz=null;
+    ultimo=null;
+    }
     
  }
