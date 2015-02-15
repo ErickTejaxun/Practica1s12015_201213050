@@ -45,6 +45,7 @@ public class MenuJPlanta extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PlantasVsZombis 1.0.0");
+        setResizable(false);
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 2, 18)); // NOI18N
