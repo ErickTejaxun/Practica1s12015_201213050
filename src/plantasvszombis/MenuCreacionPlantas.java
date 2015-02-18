@@ -67,6 +67,7 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         scroll = new javax.swing.JScrollPane();
         Mostrador = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PlantasVsZombis 1.0.0");
@@ -165,9 +166,13 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
         scroll.setViewportView(Mostrador);
 
         getContentPane().add(scroll);
-        scroll.setBounds(30, 360, 830, 290);
+        scroll.setBounds(20, 390, 830, 290);
         scroll.setViewportView(Mostrador);
         scroll.getViewport().setView(Mostrador);
+
+        jLabel12.setText("jLabel12");
+        getContentPane().add(jLabel12);
+        jLabel12.setBounds(650, 350, 40, 14);
 
         setBounds(0, 0, 1091, 726);
     }// </editor-fold>//GEN-END:initComponents
@@ -285,6 +290,7 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
