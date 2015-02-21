@@ -128,7 +128,7 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(320, 190, 130, 30);
+        jButton1.setBounds(320, 150, 130, 30);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(20, 70, 530, 240);
