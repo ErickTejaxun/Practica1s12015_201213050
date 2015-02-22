@@ -22,7 +22,8 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
      * Creates new form MenuCreacionPlantas
      */
     public String pathactual;
-    public nodo_planta nuevaplanta;
+    public Nodo nuevonodo;
+    public Personaje nuevaplanta;
     public int mostradorx;
     public int mostradory;
     
@@ -60,14 +61,22 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
         lista_tipo = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        scroll = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
         Mostrador = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        scrollPane1 = new java.awt.ScrollPane();
+        Mostrador1 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PlantasVsZombis 1.0.0");
@@ -137,44 +146,87 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(30, 10, 340, 50);
 
-        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 2, 12)); // NOI18N
-        jLabel3.setText("Imagen");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(40, 330, 90, 30);
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setViewportBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
 
-        jLabel8.setFont(new java.awt.Font("Comic Sans MS", 2, 12)); // NOI18N
-        jLabel8.setText("Nombre");
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(150, 330, 90, 30);
-
-        jLabel9.setFont(new java.awt.Font("Comic Sans MS", 2, 12)); // NOI18N
-        jLabel9.setText("Ataque");
-        getContentPane().add(jLabel9);
-        jLabel9.setBounds(300, 330, 70, 30);
-
-        jLabel10.setFont(new java.awt.Font("Comic Sans MS", 2, 12)); // NOI18N
-        jLabel10.setText("Defensa");
-        getContentPane().add(jLabel10);
-        jLabel10.setBounds(440, 330, 70, 30);
+        Mostrador.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Mostrador.setLayout(null);
 
         jLabel11.setFont(new java.awt.Font("Comic Sans MS", 2, 12)); // NOI18N
         jLabel11.setText("Tipo");
-        getContentPane().add(jLabel11);
-        jLabel11.setBounds(590, 330, 70, 30);
+        Mostrador.add(jLabel11);
+        jLabel11.setBounds(530, 10, 70, 30);
 
-        scroll.setBorder(new javax.swing.border.MatteBorder(null));
-        scroll.setViewportView(Mostrador);
+        jLabel12.setText("Opciones");
+        Mostrador.add(jLabel12);
+        jLabel12.setBounds(660, 20, 90, 20);
 
-        getContentPane().add(scroll);
-        scroll.setBounds(20, 390, 830, 290);
-        scroll.setViewportView(Mostrador);
-        scroll.getViewport().setView(Mostrador);
+        jLabel10.setFont(new java.awt.Font("Comic Sans MS", 2, 12)); // NOI18N
+        jLabel10.setText("Defensa");
+        Mostrador.add(jLabel10);
+        jLabel10.setBounds(420, 10, 70, 30);
 
-        jLabel12.setText("jLabel12");
-        getContentPane().add(jLabel12);
-        jLabel12.setBounds(650, 350, 40, 14);
+        jLabel9.setFont(new java.awt.Font("Comic Sans MS", 2, 12)); // NOI18N
+        jLabel9.setText("Ataque");
+        Mostrador.add(jLabel9);
+        jLabel9.setBounds(280, 10, 70, 30);
 
-        setBounds(0, 0, 1091, 726);
+        jLabel8.setFont(new java.awt.Font("Comic Sans MS", 2, 12)); // NOI18N
+        jLabel8.setText("Nombre");
+        Mostrador.add(jLabel8);
+        jLabel8.setBounds(130, 0, 90, 30);
+
+        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 2, 12)); // NOI18N
+        jLabel3.setText("Imagen");
+        Mostrador.add(jLabel3);
+        jLabel3.setBounds(20, 0, 90, 30);
+
+        jScrollPane1.setViewportView(Mostrador);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(60, 320, 800, 100);
+
+        Mostrador1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Mostrador1.setLayout(null);
+
+        jLabel13.setFont(new java.awt.Font("Comic Sans MS", 2, 12)); // NOI18N
+        jLabel13.setText("Tipo");
+        Mostrador1.add(jLabel13);
+        jLabel13.setBounds(530, 10, 70, 30);
+
+        jLabel14.setText("Opciones");
+        Mostrador1.add(jLabel14);
+        jLabel14.setBounds(660, 20, 90, 20);
+
+        jLabel15.setFont(new java.awt.Font("Comic Sans MS", 2, 12)); // NOI18N
+        jLabel15.setText("Defensa");
+        Mostrador1.add(jLabel15);
+        jLabel15.setBounds(420, 10, 70, 30);
+
+        jLabel16.setFont(new java.awt.Font("Comic Sans MS", 2, 12)); // NOI18N
+        jLabel16.setText("Ataque");
+        Mostrador1.add(jLabel16);
+        jLabel16.setBounds(280, 10, 70, 30);
+
+        jLabel17.setFont(new java.awt.Font("Comic Sans MS", 2, 12)); // NOI18N
+        jLabel17.setText("Nombre");
+        Mostrador1.add(jLabel17);
+        jLabel17.setBounds(130, 0, 90, 30);
+
+        jLabel18.setFont(new java.awt.Font("Comic Sans MS", 2, 12)); // NOI18N
+        jLabel18.setText("Imagen");
+        Mostrador1.add(jLabel18);
+        jLabel18.setBounds(20, 0, 90, 30);
+
+        scrollPane1.add(Mostrador1);
+
+        getContentPane().add(scrollPane1);
+        scrollPane1.setBounds(60, 450, 370, 100);
+
+        setBounds(0, 0, 1140, 726);
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_imagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_imagenActionPerformed
@@ -203,7 +255,7 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
        
         
     }//GEN-LAST:event_boton_imagenActionPerformed
-    public void mostrar(nodo_planta nuevo){
+    public void mostrar(Personaje nuevo){
         String nombre=nuevo.nombre;
         String tipo=nuevo.tipo;
         String paht=nuevo.pathimagen;
@@ -229,9 +281,17 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
         int defensa= Integer.valueOf(lista_defensa.getSelectedItem().toString());
         String tipo=lista_tipo.getSelectedItem().toString();
 
-        nuevaplanta=new nodo_planta(nombre,pathactual,ataque,defensa,tipo);
-        PlantasvsZombis.plantas.insertar(nuevaplanta);
+        nuevaplanta=new Personaje();
+//        nombre,pathactual,ataque,defensa,tipo
+        nuevaplanta.nombre=nombre;
+        nuevaplanta.ataque=ataque;
+        nuevaplanta.defensa=defensa;
+        nuevaplanta.tipo=tipo;
+        nuevaplanta.tipo_personaje="Planta";
+        nuevonodo=new Nodo(nuevaplanta);
+        PlantasvsZombis.Lista_plantas.insertar(nuevonodo);
         limpiar();
+       
         mostrar(nuevaplanta);
         
    
@@ -284,6 +344,7 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Mostrador;
+    private javax.swing.JPanel Mostrador1;
     private javax.swing.JButton boton_imagen;
     private javax.swing.JLabel imagenaqui;
     private javax.swing.JButton jButton1;
@@ -291,6 +352,12 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -300,10 +367,11 @@ public class MenuCreacionPlantas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox lista_ataque;
     private javax.swing.JComboBox lista_defensa;
     private javax.swing.JComboBox lista_tipo;
     private javax.swing.JTextField nombre_planta;
-    private static javax.swing.JScrollPane scroll;
+    private java.awt.ScrollPane scrollPane1;
     // End of variables declaration//GEN-END:variables
 }
