@@ -27,18 +27,100 @@ public class Tablero extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        Panel1 = new javax.swing.JPanel();
+        Plantas = new javax.swing.JScrollPane();
+        Zombies = new javax.swing.JScrollPane();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
+        labeljugador1 = new javax.swing.JLabel();
+        labeljuagador2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        labelrestantes1 = new javax.swing.JLabel();
+        labelrestantes2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
+
+        Panel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout Panel1Layout = new javax.swing.GroupLayout(Panel1);
+        Panel1.setLayout(Panel1Layout);
+        Panel1Layout.setHorizontalGroup(
+            Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 588, Short.MAX_VALUE)
+        );
+        Panel1Layout.setVerticalGroup(
+            Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 308, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(Panel1);
+        Panel1.setBounds(130, 50, 590, 310);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 400, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+
+        Zombies.setViewportView(jPanel2);
+
+        Plantas.setViewportView(Zombies);
+
+        getContentPane().add(Plantas);
+        Plantas.setBounds(740, 50, 90, 310);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
         );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 430, Short.MAX_VALUE)
+        );
+
+        jScrollPane1.setViewportView(jPanel1);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(10, 50, 100, 310);
+
+        labeljugador1.setText("Jugador 1");
+        getContentPane().add(labeljugador1);
+        labeljugador1.setBounds(10, 10, 140, 30);
+
+        labeljuagador2.setText("Jugador 2");
+        getContentPane().add(labeljuagador2);
+        labeljuagador2.setBounds(690, 10, 140, 30);
+
+        jLabel1.setText("Personajes Restantes");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(700, 370, 130, 30);
+
+        jLabel2.setText("Personajes Restantes");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(10, 370, 130, 30);
+
+        labelrestantes1.setText("000");
+        getContentPane().add(labelrestantes1);
+        labelrestantes1.setBounds(10, 400, 100, 30);
+
+        labelrestantes2.setText("000");
+        getContentPane().add(labelrestantes2);
+        labelrestantes2.setBounds(700, 400, 100, 30);
+
+        jLabel3.setText("Tiempo");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(190, 10, 350, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -79,5 +161,18 @@ public class Tablero extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Panel1;
+    private javax.swing.JScrollPane Plantas;
+    private javax.swing.JScrollPane Zombies;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labeljuagador2;
+    private javax.swing.JLabel labeljugador1;
+    private javax.swing.JLabel labelrestantes1;
+    private javax.swing.JLabel labelrestantes2;
     // End of variables declaration//GEN-END:variables
 }
