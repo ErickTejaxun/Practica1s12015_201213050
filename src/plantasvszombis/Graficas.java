@@ -323,7 +323,7 @@ public String direccionBase;
                         "nodo0[label=\""+PlantasvsZombis.jugadores.raiz.nombre_jugador+"\"];\n" +
                         "nodo1[label=\""+PlantasvsZombis.jugadores.raiz.numero_personajes+"\"];";
                          while(atributos!=null){
-                         texto+="nodo"+numeronodo+"[label=\""+atributos.nombre+"];\n"+
+                         texto+="nodo"+numeronodo+"[label=\""+atributos.nombre+"\"];\n"+
                                  "nodo"+numeronodo+"[label=\""+atributos.dato+"\"];\n";
                          atributos=atributos.siguiente;
                          numeronodo++;
@@ -333,32 +333,23 @@ public String direccionBase;
                          {
                              texto+=" nodo"+g+" -> nodo"+(g+1)+";";
                          }
-                         texto+=";{ \n" +
-                         " rank = same; \n" +
-                         PlantasvsZombis.jugadores.ultimo.tipo_jugador+";";
-                         
-                         
-                         //Recolectamos los datos del Segundo jugador
+                        //Recolectamos los datos del Segundo jugador
                         numeronodo=2;
                         nodo_atributo atributos2=jugadores.atributos.ultimo;
-                        texto+="digraph G{ \n" +
-                        " rankidir = LR;\n" +
-                        " node[shape = record]; \n" +
-                        " rankidir = UD;\n" +
-                        " {  rank = same; \n" + 
+                        texto+="};{  rank = same; \n" + 
                         PlantasvsZombis.jugadores.ultimo.tipo_jugador+";"+
-                        "nodo0[label=\""+PlantasvsZombis.jugadores.ultimo.nombre_jugador+"\"];\n" +
-                        "nodo1[label=\""+PlantasvsZombis.jugadores.ultimo.numero_personajes+"\"];";
+                        "nodos0[label=\""+PlantasvsZombis.jugadores.ultimo.nombre_jugador+"\"];\n" +
+                        "nodos1[label=\""+PlantasvsZombis.jugadores.ultimo.numero_personajes+"\"];";
                          while(atributos2!=null){
-                         texto+="nodo"+numeronodo+"[label=\""+atributos2.nombre+"];\n"+
-                                 "nodo"+numeronodo+"[label=\""+atributos2.dato+"\"];\n";
+                         texto+="nodos"+numeronodo+"[label=\""+atributos2.nombre+"\"];\n"+
+                                 "nodos"+numeronodo+"[label=\""+atributos2.dato+"\"];\n";
                          atributos2=atributos2.siguiente;
                          numeronodo++;
                          }
-                         texto+= PlantasvsZombis.jugadores.ultimo.tipo_jugador+" -> nodo0";
+                         texto+= PlantasvsZombis.jugadores.ultimo.tipo_jugador+" -> nodos0";
                          for(int g=0;g<numeronodo;g++)
                          {
-                             texto+=" nodo"+g+" -> nodo"+(g+1)+";";
+                             texto+=" nodos"+g+" -> nodos"+(g+1)+";";
                          }
                          texto+="}; Jugadores -> "+PlantasvsZombis.jugadores.raiz.tipo_jugador+"; \n" +
                                     PlantasvsZombis.jugadores.raiz.tipo_jugador+" -> "+PlantasvsZombis.jugadores.ultimo.tipo_jugador+"; \n" +
