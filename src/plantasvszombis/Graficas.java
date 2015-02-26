@@ -461,10 +461,10 @@ public void arbolespersonajes(){
                         int numeronodo=0;                       
                         texto+="digraph G{ \n" +
                                 " rankidir = LR;\n" +
-                                " node[shape = circle]; \n" +
+                                " node[shape = same]; \n" +
                                 " rankidir = UD;\n" +
                                 " {  rank = same; \n" +
-                                "Personajes;"
+                                "Personajes -> Plantas;"
                                 + "Plantas ->";
                         
                         
@@ -475,15 +475,16 @@ public void arbolespersonajes(){
                         
                         
                         while(nodoauxiliar!=null){
-                        texto+=plantas.nombre+"; \n "+plantas.nombre+" -> ";
+                        
                         if(nodoauxiliar.siguiente==null){
+                        texto+=plantas.nombre+";";
                         nodoauxiliar=nodoauxiliar.siguiente;}else{
+                        texto+=plantas.nombre+"; \n "+plantas.nombre+" -> ";
                         nodoauxiliar=nodoauxiliar.siguiente;
                         plantas=nodoauxiliar.contenido;
                         }
                         }
                         
-                         texto+=plantas.nombre+"; \n";
                          nodoauxiliar=PlantasvsZombis.Lista_plantas.raiz;
                          plantas=nodoauxiliar.contenido;
                          while(nodoauxiliar!=null){
@@ -496,12 +497,10 @@ public void arbolespersonajes(){
                          texto+=numeronodo+"nodo[label=\"Tipo: "+plantas.tipo+"\"];\n";
                          numeronodo++;
 //                       texto+=numeronodo+"nodo"+numeronodo+"[label=\"Path "+plantas.pathimagen+"\"];\n";
-                         nodoauxiliar=nodoauxiliar.siguiente;
-                         numeronodo++;
-                         texto+= PlantasvsZombis.Lista_plantas.raiz.contenido.nombre+" -> nodo0;";
-                         for(int g=0;g<numeronodo;g++)
+                         texto+= nodoauxiliar.contenido.nombre+" -> 1nodo;";                                                                        
+                         for(int g=1;g<(numeronodo-1);g++)
                          {
-                             texto+=numeronodo+"nodo"+g+" -> "+numeronodo+"nodo"+(g+1)+";";
+                             texto+=g+"nodo -> "+(g+1)+"nodo;";
                          }
                          if(nodoauxiliar.siguiente==null){
                          nodoauxiliar=nodoauxiliar.siguiente;
