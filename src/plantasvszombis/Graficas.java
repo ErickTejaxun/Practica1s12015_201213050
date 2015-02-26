@@ -6,6 +6,7 @@
 package plantasvszombis;
 
 import Estructuras.Nodo;
+import Estructuras.Personaje;
 import Estructuras.nodo_atributo;
 import Estructuras.nodo_jugador;
 import java.awt.HeadlessException;
@@ -362,7 +363,7 @@ imprimir2();        // TODO add your handling code here:
                     nodo_jugador jugadores=PlantasvsZombis.jugadores.raiz;
                     nodo_atributo atributos=jugadores.atributos.raiz;
                         //Recolectamos los datos del primer jugador
-                        int numeronodo=3;                       
+                        int numeronodo=1;                       
                         texto+="digraph G{ \n" +
                         " rankidir = LR;\n" +
                         " node[shape = record]; \n" +
@@ -379,14 +380,14 @@ imprimir2();        // TODO add your handling code here:
                          numeronodo++;
                          }
                          texto+= PlantasvsZombis.jugadores.raiz.tipo_jugador+" -> nodo0;";
-                         for(int g=0;g<numeronodo;g++)
+                         for(int g=0;g<(numeronodo-1);g++)
                          {
                              texto+=" nodo"+g+" -> nodo"+(g+1)+";";
                          }
                         //Recolectamos los datos del Segundo jugador
-                        numeronodo=2;
-                        nodo_atributo atributos2=jugadores.atributos.ultimo;
-                        texto+="};{  rank = same; \n" + 
+                        numeronodo=1;
+                        nodo_atributo atributos2=jugadores.siguiente.atributos.raiz;
+                        texto+="\n" + 
                         PlantasvsZombis.jugadores.ultimo.tipo_jugador+";"+
                         "nodos0[label=\""+PlantasvsZombis.jugadores.ultimo.nombre_jugador+"\"];\n" +
                         "nodos1[label=\""+PlantasvsZombis.jugadores.ultimo.numero_personajes+"\"];";
@@ -398,7 +399,7 @@ imprimir2();        // TODO add your handling code here:
                          numeronodo++;
                          }
                          texto+= PlantasvsZombis.jugadores.ultimo.tipo_jugador+" -> nodos0;";
-                         for(int g=0;g<numeronodo;g++)
+                         for(int g=0;g<(numeronodo-1);g++)
                          {
                              texto+="nodos"+g+" -> nodos"+(g+1)+";";
                          }
@@ -444,10 +445,18 @@ public void arbolespersonajes(){
             
                 FileReader lector;
                 try{
+                    
+                    
+                    //Error de sistemashkhdafkjgnkdg
                     lector=new FileReader(abrir);
                     BufferedReader lee = new BufferedReader(lector);
                     String aux="";
-                    Nodo plantas=(Nodo) PlantasvsZombis.Lista_plantas.raiz.contenido;
+                    //Este es el puto errror
+                   
+                    Personaje plantas;
+                    Nodo nodoauxiliar=PlantasvsZombis.Lista_plantas.raiz;
+                    plantas=nodoauxiliar.contenido;
+                    
                                             //Recolectamos los datos del primer jugador
                         int numeronodo=0;                       
                         texto+="digraph G{ \n" +
@@ -461,36 +470,47 @@ public void arbolespersonajes(){
                         
                         //       Planta -> Zombie; 
                         //       Zombie -> Zombie2;
-                        //        Zombie2 -> Zombie3;                 
-                        while(plantas!=null){
+                        //        Zombie2 -> Zombie3;  
+                        
+                        
+                        
+                        while(nodoauxiliar!=null){
                         texto+=plantas.nombre+"; \n "+plantas.nombre+" -> ";
-                        plantas=plantas.siguiente;
+                        if(nodoauxiliar.siguiente==null){
+                        nodoauxiliar=nodoauxiliar.siguiente;}else{
+                        nodoauxiliar=nodoauxiliar.siguiente;
+                        plantas=nodoauxiliar.contenido;
+                        }
                         }
                         
                          texto+=plantas.nombre+"; \n";
-                         plantas=PlantasvsZombis.Lista_plantas.raiz;
-                         while(plantas!=null){
-                         texto+=plantas.nombre+"[label=\"Nombre "+plantas.nombre+"\"];\n";
+                         nodoauxiliar=PlantasvsZombis.Lista_plantas.raiz;
+                         plantas=nodoauxiliar.contenido;
+                         while(nodoauxiliar!=null){
+                         texto+=plantas.nombre+"[label=\"Nombre: "+plantas.nombre+"\"];\n";
                          numeronodo++;
-                         texto+=numeronodo+"nodo"+numeronodo+"[label=\"Ataque "+plantas.ataque+"\"];\n";
+                         texto+=numeronodo+"nodo[label=\"Ataque: "+plantas.ataque+"\"];\n";
                          numeronodo++;
-                         texto+=numeronodo+"nodo"+numeronodo+"[label=\"Defensa "+plantas.defensa+"\"];\n";
+                         texto+=numeronodo+"nodo[label=\"Defensa: "+plantas.defensa+"\"];\n";
                          numeronodo++;
-                         texto+=numeronodo+"nodo"+numeronodo+"[label=\"Tipo "+plantas.tipo+"\"];\n";
+                         texto+=numeronodo+"nodo[label=\"Tipo: "+plantas.tipo+"\"];\n";
                          numeronodo++;
-                         texto+=numeronodo+"nodo"+numeronodo+"[label=\"Path "+plantas.pathimagen+"\"];\n";
-                         plantas=plantas.siguiente;
+//                       texto+=numeronodo+"nodo"+numeronodo+"[label=\"Path "+plantas.pathimagen+"\"];\n";
+                         nodoauxiliar=nodoauxiliar.siguiente;
                          numeronodo++;
-                         texto+= PlantasvsZombis.jugadores.raiz.tipo_jugador+" -> nodo0;";
+                         texto+= PlantasvsZombis.Lista_plantas.raiz.contenido.nombre+" -> nodo0;";
                          for(int g=0;g<numeronodo;g++)
                          {
                              texto+=numeronodo+"nodo"+g+" -> "+numeronodo+"nodo"+(g+1)+";";
                          }
+                         if(nodoauxiliar.siguiente==null){
+                         nodoauxiliar=nodoauxiliar.siguiente;
+                         }else{
+                         nodoauxiliar=nodoauxiliar.siguiente;
+                         plantas=nodoauxiliar.contenido;}
                          
                          }                       
-                         texto+="};\n" +
-                                    " \n" +
-                                    "; }\n" +
+                         texto+="}\n" +
                                     " } ";
                          
                          
